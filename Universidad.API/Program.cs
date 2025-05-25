@@ -7,14 +7,16 @@ namespace Universidad.API
     {
         public static void Main(string[] args)
         {
+            
+
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddDbContext<DbUniversidadAPIContext>(options =>
-                options.UseMySql(
-                    builder.Configuration.GetConnectionString("DbUniversidadAPIContext"),
-                    new MySqlServerVersion(new Version(8, 0, 23)) // Especifica la versión de MySQL
+            options.UseOracle(
+            builder.Configuration.GetConnectionString("DbUniversidadAPIContext")
                 )
             );
+
 
             // Add services to the container.
 
